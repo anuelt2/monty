@@ -12,7 +12,7 @@ void call_opcodes(stack_t **stack)
 	int idx;
 	instruction_t action_call[] = {
 		{"push", push}, {"pall", pall},
-		{"pint", pint},
+		{"pint", pint}, {"pop", pop},
 		{NULL, NULL}
 	};
 	if (file_args->args[0] == NULL)
