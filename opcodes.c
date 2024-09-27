@@ -18,6 +18,7 @@ void call_opcodes(stack_t **stack)
 		{"div", _div}, {"mul", mul},
 		{"mod", mod}, {"pchar", pchar},
 		{"pstr", pstr}, {"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	if (file_args->args[0] == NULL)
