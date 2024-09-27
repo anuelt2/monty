@@ -70,5 +70,6 @@ int check_num(char *str);
 void call_opcodes(stack_t **stack);
 void free_args(void);
 void malloc_fail(void);
+void pint(stack_t **stack, unsigned int line_number);
 
 #endif
