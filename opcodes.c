@@ -23,6 +23,10 @@ void call_opcodes(stack_t **stack)
 	{
 		return;
 	}
+	if (file_args->args[0][0] == '#')
+	{
+		return;
+	}
 
 	idx = 0;
 	while (action_call[idx].opcode != NULL)
