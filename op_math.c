@@ -47,7 +47,7 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _div - Subtracts the top element from the second top element of a stack
+ * _div - Divides the second top element by the top element of a stack
  * @stack: Pointer to top of the stack
  * @line_number: Line number of command in file
  *
@@ -72,4 +72,27 @@ void _div(stack_t **stack, unsigned int line_number)
 	quotient = (*stack)->next->n / (*stack)->n;
 	pop(stack, line_number);
 	(*stack)->n = quotient;
+}
+
+/**
+ * mul - Multiplies the second top element with the top element of a stack
+ * @stack: Pointer to top of the stack
+ * @line_number: Line number of command in file
+ *
+ * Return: Void
+ */
+
+void mul(stack_t **stack, unsigned int line_number)
+{
+	int product;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	product = (*stack)->next->n * (*stack)->n;
+	pop(stack, line_number);
+	(*stack)->n = product;
 }
