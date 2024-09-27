@@ -13,7 +13,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	stack_t *temp;
 
 	(void)line_number;
-	if (*stack == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
 		return;
 	}
@@ -27,7 +27,7 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pint - Prints all elements in a stack
+ * pint - Prints the value at the top of the stack
  * @stack: Pointer to top of stack
  * @line_number: Line number of command in file
  *
@@ -36,11 +36,35 @@ void pall(stack_t **stack, unsigned int line_number)
 
 void pint(stack_t **stack, unsigned int line_number)
 {
-	if (*stack == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	fprintf(stdout, "%d\n", (*stack)->n);
+}
+
+/**
+ * pchar - Prints the char at the top of the stack
+ * @stack: Pointer to top of stack
+ * @line_number: Line number of command in file
+ *
+ * Return: Void
+ */
+
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL || *stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n < 0 || (*stack)->n > 127)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	fprintf(stdout, "%c\n", (*stack)->n);
 }
