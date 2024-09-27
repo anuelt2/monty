@@ -65,3 +65,36 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 	free(temp);
 }
+
+/**
+ * swap - Swaps the top two elements of a stack
+ * @stack: Pointer to top of the stack
+ * @line_number: Line number of command in file
+ *
+ * Return: Void
+ */
+
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp_1;
+	stack_t *temp_2;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n",
+			line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp_1 = *stack;
+	temp_2 = temp_1->next;
+	temp_1->next = temp_2->next;
+	if (temp_1->next != NULL)
+	{
+		temp_1->next->prev = temp_1;
+	}
+	temp_2->prev = NULL;
+	temp_1->prev = temp_2;
+	temp_2->next = temp_1;
+	*stack = temp_2;
+}
