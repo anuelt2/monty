@@ -96,3 +96,31 @@ void mul(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 	(*stack)->n = product;
 }
+
+/**
+ * mod - Finds modulo of the second top element and the top element of a stack
+ * @stack: Pointer to top of the stack
+ * @line_number: Line number of command in file
+ *
+ * Return: Void
+ */
+
+void mod(stack_t **stack, unsigned int line_number)
+{
+	int modulo;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	modulo = (*stack)->next->n % (*stack)->n;
+	pop(stack, line_number);
+	(*stack)->n = modulo;
+}
